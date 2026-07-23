@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemilihan Duta Adiwiyata - SMPN 49 Jakarta</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            green: '#10B981',
+                            lime: '#84CC16',
+                            yellow: '#FACC15',
+                            dark: '#064E3B',
+                            light: '#ECFDF5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .bg-pattern {
+            background-color: #f0fdf4;
+            background-image: radial-gradient(#84cc16 0.75px, transparent 0.75px), radial-gradient(#84cc16 0.75px, #f0fdf4 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0,15px 15px;
+        }
+    </style>
+</head>
+<body class="bg-pattern text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Navigasi / Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b-4 border-yellow-400">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-emerald-500 text-white p-2 rounded-2xl shadow-md transform -rotate-3">
+                    <i data-lucide="leaf" class="w-7 h-7"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-lg sm:text-xl text-emerald-950 leading-none">DUTA ADIWIYATA</h1>
+                    <p class="text-xs text-emerald-600 font-bold tracking-wider mt-0.5">SMPN 49 JAKARTA</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex gap-6 font-semibold text-sm text-emerald-900">
+                <a href="#beranda" class="hover:text-emerald-600 transition">Beranda</a>
+                <a href="#kandidat" class="hover:text-emerald-600 transition">Kandidat</a>
+                <a href="#hasil-vote" class="hover:text-emerald-600 transition">Hasil Vote</a>
+                <a href="#galeri" class="hover:text-emerald-600 transition">Galeri Aksi</a>
+                <a href="#lokasi" class="hover:text-emerald-600 transition">Lokasi</a>
+            </nav>
+            <a href="#kandidat" class="bg-gradient-to-r from-yellow-400 to-emerald-500 hover:from-yellow-500 hover:to-emerald-600 text-emerald-950 font-extrabold px-5 py-2 rounded-full shadow-md text-sm transition transform hover:scale-105">
+                VOTE SEKARANG
+            </a>
+        </div>
+    </header>
+
+    <!-- 1. BERANDA -->
+    <section id="beranda" class="relative py-16 md:py-20 px-4 overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 bg-yellow-300 text-emerald-950 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full mb-6 shadow-sm border border-yellow-400">
+                <i data-lucide="sparkles" class="w-4 h-4 text-emerald-900"></i>
+                <span>Program Pemilihan Duta Adiwiyata</span>
+            </div>
+            
+            <h2 class="text-3xl sm:text-6xl font-black text-emerald-950 leading-tight mb-6 tracking-tight">
+                Hijaukan Sekolah,<br>
+                <span class="text-emerald-600 underline decoration-yellow-400 decoration-wavy decoration-2">Selamatkan Masa Depan!</span>
+            </h2>
+            
+            <p class="text-gray-700 text-base sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
+                Selamat datang di platform resmi Pemilihan Duta Adiwiyata SMPN 49 Jakarta Kramat Jati. Mari dukung calon pemimpin muda yang peduli kelestarian lingkungan sekolah!
+            </p>
+
+            <!-- Ringkasan Statistik Beranda -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-10 text-left">
+                <div class="bg-white p-4 rounded-2xl border-2 border-emerald-100 shadow-sm">
+                    <div class="text-emerald-600 font-black text-2xl">2</div>
+                    <div class="text-xs text-gray-600 font-semibold">Calon Duta Terbaik</div>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border-2 border-emerald-100 shadow-sm">
+                    <div id="statTotalVote" class="text-emerald-600 font-black text-2xl">310</div>
+                    <div class="text-xs text-gray-600 font-semibold">Total Suara Masuk</div>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border-2 border-emerald-100 shadow-sm">
+                    <div class="text-emerald-600 font-black text-2xl">49</div>
+                    <div class="text-xs text-gray-600 font-semibold">SMPN Jakarta Timur</div>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border-2 border-emerald-100 shadow-sm">
+                    <div class="text-emerald-600 font-black text-2xl">100%</div>
+                    <div class="text-xs text-gray-600 font-semibold">Aksi Peduli Lingkungan</div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#kandidat" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg transition flex items-center gap-2 text-base">
+                    <i data-lucide="vote" class="w-5 h-5"></i> Pilih Kandidat
+                </a>
+                <a href="#hasil-vote" class="bg-white hover:bg-emerald-50 text-emerald-900 font-bold px-8 py-3.5 rounded-2xl shadow-md border-2 border-emerald-200 transition flex items-center gap-2 text-base">
+                    <i data-lucide="bar-chart-3" class="w-5 h-5"></i> Lihat Perolehan Vote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SECTION PROFIL KANDIDAT (Papan Vote Utama) -->
+    <section id="kandidat" class="py-16 bg-white/90 backdrop-blur-sm border-y border-emerald-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-xs font-black uppercase tracking-widest text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">Kandidat Terbaik</span>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-emerald-950 mt-2">Calon Duta Adiwiyata</h3>
+                <p class="text-gray-600 mt-2">Dua siswa berprestasi yang dicalonkan sebagai Duta Adiwiyata</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Card Sumaya -->
+                <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/60 rounded-3xl p-6 sm:p-8 border-2 border-emerald-200 shadow-xl relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-20 h-20 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-black text-3xl shadow-lg border-2 border-white">
+                                S
+                            </div>
+                            <div>
+                                <span class="bg-emerald-200 text-emerald-900 text-xs font-black px-3 py-1 rounded-full">Nomor Urut 01</span>
+                                <h4 class="text-2xl font-black text-emerald-950 mt-1">Sumaya</h4>
+                                <p class="text-sm text-emerald-700 font-bold">Pelopor Zero Waste & Kompos Sekolah</p>
+                            </div>
+                        </div>
+
+                        <!-- Slogan -->
+                        <div class="bg-white p-4 rounded-2xl shadow-sm mb-6 border-l-4 border-emerald-500">
+                            <p class="italic font-bold text-emerald-950 text-sm sm:text-base">
+                                "Langkah Kecil, Hijaukan Sekolah! Bersama Sumaya, Wujudkan SMPN 49 Bebas Sampah Plastik!"
+                            </p>
+                        </div>
+
+                        <!-- Visi & Misi -->
+                        <div class="space-y-4 mb-6">
+                            <div>
+                                <h5 class="font-extrabold text-emerald-950 flex items-center gap-2 text-sm uppercase tracking-wider">
+                                    <i data-lucide="target" class="w-4 h-4 text-emerald-600"></i> Visi
+                                </h5>
+                                <p class="text-sm text-gray-700 mt-1 leading-relaxed">Mewujudkan lingkungan SMPN 49 Jakarta yang ramah lingkungan, minim sampah, dan berbudaya pemilahan sampah mandiri sejak dari kelas.</p>
+                            </div>
+                            <div>
+                                <h5 class="font-extrabold text-emerald-950 flex items-center gap-2 text-sm uppercase tracking-wider">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Misi Utama
+                                </h5>
+                                <ul class="list-disc list-inside text-sm text-gray-700 space-y-1 mt-1">
+                                    <li>Menggalakkan gerakan "Bawa Tumbler & Wadah Makan Mandiri".</li>
+                                    <li>Pengelolaan bank sampah organik & anorganik terstruktur.</li>
+                                    <li>Pembuatan pupuk kompos dari dedaunan gugur di area sekolah.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="castVote('Sumaya')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3.5 rounded-2xl shadow-md transition flex items-center justify-center gap-2 text-base active:scale-95">
+                        <i data-lucide="thumbs-up" class="w-5 h-5"></i> Vote Sumaya
+                    </button>
+                </div>
+
+                <!-- Card Bimasena -->
+                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100/60 rounded-3xl p-6 sm:p-8 border-2 border-yellow-300 shadow-xl relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-20 h-20 rounded-2xl bg-yellow-500 text-emerald-950 flex items-center justify-center font-black text-3xl shadow-lg border-2 border-white">
+                                B
+                            </div>
+                            <div>
+                                <span class="bg-yellow-200 text-yellow-950 text-xs font-black px-3 py-1 rounded-full">Nomor Urut 02</span>
+                                <h4 class="text-2xl font-black text-emerald-950 mt-1">Bimasena</h4>
+                                <p class="text-sm text-yellow-900 font-bold">Pelopor Penghijauan & Vertikal Garden</p>
+                            </div>
+                        </div>
+
+                        <!-- Slogan -->
+                        <div class="bg-white p-4 rounded-2xl shadow-sm mb-6 border-l-4 border-yellow-500">
+                            <p class="italic font-bold text-emerald-950 text-sm sm:text-base">
+                                "Tanam Pohon, Tumbuhkan Masa Depan! Bimasena Siap Hijaukan Setiap Sudut 49!"
+                            </p>
+                        </div>
+
+                        <!-- Visi & Misi -->
+                        <div class="space-y-4 mb-6">
+                            <div>
+                                <h5 class="font-extrabold text-emerald-950 flex items-center gap-2 text-sm uppercase tracking-wider">
+                                    <i data-lucide="target" class="w-4 h-4 text-yellow-600"></i> Visi
+                                </h5>
+                                <p class="text-sm text-gray-700 mt-1 leading-relaxed">Menciptakan ekosistem sekolah yang asri, sejuk, ramah energi, serta mengoptimalkan taman tanaman obat keluarga (TOGA).</p>
+                            </div>
+                            <div>
+                                <h5 class="font-extrabold text-emerald-950 flex items-center gap-2 text-sm uppercase tracking-wider">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-yellow-600"></i> Misi Utama
+                                </h5>
+                                <ul class="list-disc list-inside text-sm text-gray-700 space-y-1 mt-1">
+                                    <li>Program "Satu Kelas Satu Tanaman Hias / Pot Toga".</li>
+                                    <li>Optimalisasi penampungan air hujan untuk perawatan tanaman.</li>
+                                    <li>Kampanye hemat energi listrik & matikan AC/lampu saat tidak dipakai.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="castVote('Bimasena')" class="w-full bg-yellow-500 hover:bg-yellow-600 text-emerald-950 font-extrabold py-3.5 rounded-2xl shadow-md transition flex items-center justify-center gap-2 text-base active:scale-95">
+                        <i data-lucide="thumbs-up" class="w-5 h-5"></i> Vote Bimasena
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. HASIL VOTE REAL-TIME (Papan Skor Berada DI BAWAH Papan Vote) -->
+    <section id="hasil-vote" class="py-16 bg-emerald-900 text-white relative">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-8">
+                <span class="bg-yellow-400 text-emerald-950 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">Papan Skor Sementara</span>
+                <h3 class="text-2xl sm:text-4xl font-extrabold mt-2">Hasil Perolehan Suara Real-Time</h3>
+                <p class="text-emerald-200 text-sm mt-1">Pantau perolehan dukungan calon Duta Adiwiyata SMPN 49 Jakarta secara langsung!</p>
+            </div>
+
+            <!-- Card Papan Perolehan -->
+            <div class="bg-emerald-950/90 rounded-3xl p-6 sm:p-8 border-2 border-emerald-700 shadow-2xl">
+                <!-- Status Unggul -->
+                <div id="leadingBadge" class="mb-6 text-center">
+                    <span class="inline-flex items-center gap-2 bg-yellow-300 text-emerald-950 font-extrabold px-4 py-1.5 rounded-full text-xs sm:text-sm animate-bounce">
+                        <i data-lucide="trophy" class="w-4 h-4"></i> <span id="leadingText">Kandidat Unggul: Sumaya (54%)</span>
+                    </span>
+                </div>
+
+                <!-- Bar Perbandingan -->
+                <div class="mb-8">
+                    <div class="flex justify-between text-xs sm:text-sm font-bold mb-2">
+                        <span class="text-emerald-300">Sumaya (No. 01)</span>
+                        <span class="text-yellow-300">Bimasena (No. 02)</span>
+                    </div>
+                    <div class="w-full h-7 bg-emerald-800 rounded-full overflow-hidden p-1 flex">
+                        <div id="sumayaBar" class="bg-emerald-500 h-full rounded-l-full transition-all duration-500 flex items-center justify-start pl-2 text-[10px] sm:text-xs font-black text-white" style="width: 54%;">
+                            54%
+                        </div>
+                        <div id="bimasenaBar" class="bg-yellow-400 h-full rounded-r-full transition-all duration-500 flex items-center justify-end pr-2 text-[10px] sm:text-xs font-black text-emerald-950" style="width: 46%;">
+                            46%
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detail Angka Suara -->
+                <div class="grid grid-cols-2 gap-4 text-center border-t border-emerald-800 pt-6">
+                    <div class="bg-emerald-900/60 p-4 rounded-2xl border border-emerald-700/50">
+                        <div class="text-emerald-300 text-xs font-bold uppercase">Suara Sumaya</div>
+                        <div id="sumayaVoteCount" class="text-2xl sm:text-4xl font-black text-white mt-1">168</div>
+                        <div id="sumayaPercent" class="text-xs text-emerald-400 mt-0.5">54.2% dari total suara</div>
+                    </div>
+                    <div class="bg-emerald-900/60 p-4 rounded-2xl border border-emerald-700/50">
+                        <div class="text-yellow-400 text-xs font-bold uppercase">Suara Bimasena</div>
+                        <div id="bimasenaVoteCount" class="text-2xl sm:text-4xl font-black text-yellow-300 mt-1">142</div>
+                        <div id="bimasenaPercent" class="text-xs text-yellow-200/80 mt-0.5">45.8% dari total suara</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. GALERI AKSI LINGKUNGAN -->
+    <section id="galeri" class="py-16 bg-emerald-950 border-t border-emerald-800 text-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <span class="bg-emerald-800 text-yellow-300 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">Dokumentasi & Visualisasi</span>
+                <h3 class="text-3xl sm:text-4xl font-extrabold mt-2">Galeri Aksi Adiwiyata</h3>
+                <p class="text-emerald-200 max-w-xl mx-auto text-sm sm:text-base mt-1">
+                    Foto-foto aksi nyata kegiatan Adiwiyata di lingkungan sekolah SMPN 49 Jakarta Kramat Jati.
+                </p>
+            </div>
+
+            <!-- Grid Foto Aksi Nyata Adiwiyata -->
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-16">
+                <!-- Foto 1: Memilah Sampah -->
+                <div class="bg-emerald-900/80 rounded-3xl p-3 border border-emerald-700 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=700&q=80" alt="Siswa Memilah Sampah" class="w-full h-52 object-cover rounded-2xl mb-3">
+                    <div class="px-2 pb-2">
+                        <span class="bg-emerald-800 text-yellow-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Aksi Sampah</span>
+                        <h5 class="font-bold text-white text-base mt-1">Pemilahan Sampah Mandiri</h5>
+                        <p class="text-xs text-emerald-300 mt-1">Siswa memisahkan botol plastik dan sampah daur ulang di tempat sampah khusus.</p>
+                    </div>
+                </div>
+
+                <!-- Foto 2: Menanam Pohon / Tanaman Hias -->
+                <div class="bg-emerald-900/80 rounded-3xl p-3 border border-emerald-700 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=700&q=80" alt="Penanaman Tanaman Hias" class="w-full h-52 object-cover rounded-xl mb-3">
+                    <div class="px-2 pb-2">
+                        <span class="bg-emerald-800 text-yellow-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Aksi Penghijauan</span>
+                        <h5 class="font-bold text-white text-base mt-1">Penanaman Tanaman Kebun</h5>
+                        <p class="text-xs text-emerald-300 mt-1">Kegiatan menanam bibit pohon dan pot tanaman obat keluarga di lingkungan sekolah.</p>
+                    </div>
+                </div>
+
+                <!-- Foto 3: Kebun Hidroponik Sekolah -->
+                <div class="bg-emerald-900/80 rounded-3xl p-3 border border-emerald-700 shadow-lg sm:col-span-2 md:col-span-1">
+                    <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=700&q=80" alt="Taman Hidroponik Sekolah" class="w-full h-52 object-cover rounded-xl mb-3">
+                    <div class="px-2 pb-2">
+                        <span class="bg-emerald-800 text-yellow-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Aksi Tanaman</span>
+                        <h5 class="font-bold text-white text-base mt-1">Perawatan Taman Vertikal</h5>
+                        <p class="text-xs text-emerald-300 mt-1">Menjaga kerapian tanaman hias gantung dan hidroponik agar udara sekolah tetap sejuk.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fitur Tambahan: AI Generator khusus Simulasi Program -->
+            <div class="bg-emerald-900/90 rounded-3xl p-6 sm:p-8 border-2 border-emerald-700 max-w-3xl mx-auto">
+                <div class="text-center mb-6">
+                    <span class="bg-yellow-400 text-emerald-950 text-xs font-black px-3 py-1 rounded-full uppercase">Simulasi Program AI</span>
+                    <h4 class="text-xl font-bold text-white mt-2">Buat Gambaran Aksi Adiwiyata Tambahan</h4>
+                    <p class="text-xs text-emerald-200 mt-1">Klik salah satu tombol opsi program di bawah untuk memunculkan gambar ilustrasi aksi:</p>
+                </div>
+
+                <!-- Preset Buttons -->
+                <div class="flex flex-wrap justify-center gap-2 mb-6">
+                    <button onclick="generateActionImage('Siswa SMP berseragam menanam bibit tanaman hias di pot taman sekolah yang asri')" class="bg-emerald-800 hover:bg-emerald-700 text-yellow-300 text-xs font-bold px-3.5 py-2 rounded-xl transition border border-emerald-600">
+                        🌱 Penanaman Bibit Pohon
+                    </button>
+                    <button onclick="generateActionImage('Siswa SMP membuang botol plastik ke tempat sampah daur ulang di halaman sekolah hijau')" class="bg-emerald-800 hover:bg-emerald-700 text-yellow-300 text-xs font-bold px-3.5 py-2 rounded-xl transition border border-emerald-600">
+                        ♻️ Pemilahan Sampah Plastik
+                    </button>
+                    <button onclick="generateActionImage('Taman hidroponik vertikal dengan tanaman sayur hijau segar di dinding koridor sekolah')" class="bg-emerald-800 hover:bg-emerald-700 text-yellow-300 text-xs font-bold px-3.5 py-2 rounded-xl transition border border-emerald-600">
+                        🪴 Kebun Vertikal Hidroponik
+                    </button>
+                </div>
+
+                <!-- Output Gambar AI -->
+                <div class="bg-emerald-950 rounded-2xl p-3 border border-emerald-800 min-h-[260px] flex flex-col items-center justify-center relative">
+                    <div id="aiLoading" class="hidden text-center py-10">
+                        <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-yellow-400 border-t-transparent mb-2"></div>
+                        <p class="text-xs text-emerald-200 animate-pulse">Sedang memproses gambaran aksi...</p>
+                    </div>
+                    <img id="aiImageResult" src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" alt="Simulasi Aksi Adiwiyata" class="w-full h-64 object-cover rounded-xl shadow-md">
+                    <p id="imageCaption" class="text-xs text-center text-emerald-300 mt-2 font-medium">Ilustrasi Program: Kegiatan Penanaman dan Perawatan Lingkungan Sekolah</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. LOKASI SEKOLAH SMPN 49 JAKARTA -->
+    <section id="lokasi" class="py-16 max-w-6xl mx-auto px-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border-2 border-emerald-100 shadow-xl">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <span class="text-xs font-black uppercase tracking-widest text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">Lokasi Kegiatan</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-emerald-950 mt-2">SMP Negeri 49 Jakarta</h3>
+                    <p class="text-gray-600 mt-2 text-sm leading-relaxed">
+                        Pusat pelaksanaan kegiatan Pemilihan Duta Adiwiyata bertempat di lingkungan SMPN 49 Jakarta Kramat Jati.
+                    </p>
+
+                    <div class="mt-6 space-y-3">
+                        <div class="flex items-start gap-3 text-sm text-gray-700">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                            <span>Jl. Raya Bogor KM. 20, Kramat Jati, Kec. Kramat Jati, Kota Jakarta Timur, Daerah Khusus Ibu Kota Jakarta 13510</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-gray-700">
+                            <i data-lucide="building" class="w-5 h-5 text-emerald-600 flex-shrink-0"></i>
+                            <span>Wilayah: Jakarta Timur (Kramat Jati)</span>
+                        </div>
+                    </div>
+
+                    <a href="https://maps.google.com/?q=SMP+Negeri+49+Jakarta" target="_blank" class="inline-flex items-center gap-2 mt-6 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-3 rounded-2xl text-sm transition shadow-md">
+                        <i data-lucide="external-link" class="w-4 h-4"></i> Buka Google Maps Navigasi
+                    </a>
+                </div>
+
+                <div class="rounded-2xl overflow-hidden shadow-md border border-emerald-200 h-64 sm:h-80 bg-gray-100 relative">
+                    <!-- Embedded Google Map SMPN 49 Jakarta -->
+                    <iframe 
+                        title="Lokasi SMPN 49 Jakarta"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.7891234567!2d106.8687!3d-6.2789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f2e302000001%3A0x8e8e8e8e8e8e8e8e!2sSMPN%2049%20Jakarta!5e0!3m2!1sid!2sid!4v1620000000000!5m2!1sid!2sid" 
+                        class="w-full h-full border-0" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Konfirmasi Vote -->
+    <div id="voteModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center shadow-2xl transform transition-all">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="check-circle" class="w-8 h-8"></i>
+            </div>
+            <h4 class="text-xl font-bold text-emerald-950">Suara Berhasil Dikirim!</h4>
+            <p id="modalText" class="text-gray-600 text-sm mt-2">Dukunganmu untuk calon Duta Adiwiyata telah terdaftar.</p>
+            <a href="#hasil-vote" onclick="closeModal()" class="mt-6 inline-block w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-2xl text-sm transition">
+                Lihat Perolehan Suara
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-950 text-emerald-300 py-8 mt-auto border-t-4 border-yellow-400">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <div class="flex justify-center items-center gap-2 mb-2">
+                <i data-lucide="leaf" class="w-5 h-5 text-yellow-400"></i>
+                <span class="font-extrabold text-white text-base">PEMILIHAN DUTA ADIWIYATA</span>
+            </div>
+            <p class="text-xs text-emerald-400">
+                SMPN 49 Jakarta Timur (Kramat Jati) • Gerakan Lingkungan Bersih dan Asri
+            </p>
+            <p class="text-[11px] text-emerald-600 mt-3">© Tim Adiwiyata SMPN 49 Jakarta. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts Logic -->
+    <script>
+        // Inisialisasi Ikon Lucide
+        lucide.createIcons();
+
+        // Single State Management
+        let votes = {
+            Sumaya: 168,
+            Bimasena: 142
+        };
+
+        function updateVoteUI() {
+            const total = votes.Sumaya + votes.Bimasena;
+            const sumayaPct = ((votes.Sumaya / total) * 100).toFixed(1);
+            const bimasenaPct = ((votes.Bimasena / total) * 100).toFixed(1);
+
+            // Update Counts & Percentages
+            document.getElementById('sumayaVoteCount').innerText = votes.Sumaya;
+            document.getElementById('bimasenaVoteCount').innerText = votes.Bimasena;
+            document.getElementById('sumayaPercent').innerText = `${sumayaPct}% dari total suara`;
+            document.getElementById('bimasenaPercent').innerText = `${bimasenaPct}% dari total suara`;
+            document.getElementById('statTotalVote').innerText = total;
+
+            // Update Progress Bars
+            const sumayaBar = document.getElementById('sumayaBar');
+            const bimasenaBar = document.getElementById('bimasenaBar');
+            sumayaBar.style.width = `${sumayaPct}%`;
+            sumayaBar.innerText = `${Math.round(sumayaPct)}%`;
+            bimasenaBar.style.width = `${bimasenaPct}%`;
+            bimasenaBar.innerText = `${Math.round(bimasenaPct)}%`;
+
+            // Update Leader Badge
+            const leadingText = document.getElementById('leadingText');
+            if (votes.Sumaya > votes.Bimasena) {
+                leadingText.innerText = `Kandidat Unggul Sementara: Sumaya (${Math.round(sumayaPct)}%)`;
+            } else if (votes.Bimasena > votes.Sumaya) {
+                leadingText.innerText = `Kandidat Unggul Sementara: Bimasena (${Math.round(bimasenaPct)}%)`;
+            } else {
+                leadingText.innerText = `Perolehan Suara Seimbang! (${Math.round(sumayaPct)}%)`;
+            }
+        }
+
+        // Penanganan Voting
+        function castVote(candidate) {
+            if (votes[candidate] !== undefined) {
+                votes[candidate]++;
+                updateVoteUI();
+            }
+
+            const modal = document.getElementById('voteModal');
+            const modalText = document.getElementById('modalText');
+            modalText.innerText = `Terima kasih! Dukunganmu untuk ${candidate} sebagai Duta Adiwiyata SMPN 49 Jakarta telah ditambahkan.`;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('voteModal').classList.add('hidden');
+        }
+
+        // AI Image Generator API Setup
+        const apiKey = "";
+
+        async function generateActionImage(promptText) {
+            const loadingEl = document.getElementById('aiLoading');
+            const imgEl = document.getElementById('aiImageResult');
+            const captionEl = document.getElementById('imageCaption');
+
+            loadingEl.classList.remove('hidden');
+            imgEl.classList.add('hidden');
+
+            try {
+                let response;
+                let attempts = 0;
+                const maxAttempts = 5;
+                let delay = 1000;
+
+                while (attempts < maxAttempts) {
+                    try {
+                        response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                instances: [{ prompt: promptText }],
+                                parameters: { sampleCount: 1 }
+                            })
+                        });
+                        if (response.ok) break;
+                    } catch (e) {}
+                    attempts++;
+                    await new Promise(r => setTimeout(r, delay));
+                    delay *= 2;
+                }
+
+                if (response && response.ok) {
+                    const result = await response.json();
+                    if (result.predictions && result.predictions[0]?.bytesBase64Encoded) {
+                        const base64Image = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
+                        imgEl.src = base64Image;
+                        captionEl.innerText = `Simulasi Ilustrasi: ${promptText}`;
+                    } else {
+                        throw new Error('Format gambar tidak valid');
+                    }
+                } else {
+                    throw new Error('Gagal memuat API');
+                }
+            } catch (err) {
+                console.error("Gagal memuat AI:", err);
+                imgEl.src = "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80";
+                captionEl.innerText = "Ilustrasi Aksi Lingkungan Sekolah Adiwiyata.";
+            } finally {
+                loadingEl.classList.add('hidden');
+                imgEl.classList.remove('hidden');
+            }
+        }
+
+        // Inisialisasi tampilan perolehan vote awal
+        updateVoteUI();
+    </script>
+</body>
+</html>
